@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.johorstudio.screentranslate'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.johorstudio.screentranslate'
+        minSdk 26
+        targetSdk 34
+        versionCode 8
+        versionName "1.6.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // OCR on-device (model dibundel, tak perlu Google Play download)
+    implementation 'com.google.mlkit:text-recognition:16.0.1'          // Latin
+    implementation 'com.google.mlkit:text-recognition-chinese:16.0.1'  // Cina + Latin
+    implementation 'com.google.mlkit:text-recognition-japanese:16.0.1'
+    implementation 'com.google.mlkit:text-recognition-korean:16.0.1'
+    // Terjemahan offline (pass pertama yang segera) + kenal pasti bahasa
+    implementation 'com.google.mlkit:translate:17.0.3'
+    implementation 'com.google.mlkit:language-id:17.0.6'
+}
